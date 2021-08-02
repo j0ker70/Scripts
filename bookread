@@ -1,0 +1,5 @@
+#!/bin/sh
+
+DIR=$(ls ~/Documents/Books | sort | dmenu -r -i -p "Choose topic: ") || exit 1
+bookname=$(ls ~/Documents/Books/"$DIR" | sort | dmenu -r -i -l 30 -p "Book Name: ") || exit 1
+zathura ~/Documents/Books/"$DIR"/"$bookname" 2> /dev/null

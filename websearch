@@ -1,0 +1,15 @@
+#!/bin/sh
+
+OPTIONS="Google https://www.google.com/search?q="
+OPTIONS="$OPTIONS\nDuckDuckGo https://duckduckgo.com/?q="
+OPTIONS="$OPTIONS\nYouTube https://www.youtube.com/results?search_query="
+OPTIONS="$OPTIONS\nReddit https://www.reddit.com/search/?q="
+OPTIONS="$OPTIONS\nIMDB https://www.imdb.com/find?q="
+OPTIONS="$OPTIONS\nScholar https://scholar.google.com/scholar?q="
+OPTIONS="$OPTIONS\nFacebook https://www.facebook.com/search?q="
+
+ENGINE=$(echo $OPTIONS | cut -d' ' -f1 | sort | dmenu -i -r -p "Choose Engine") || exit 1
+
+QUERY=$(echo "" | dmenu -p "$ENGINE:")
+
+$BROWSER $(echo $OPTIONS | grep $ENGINE | cut -d' ' -f2)"$QUERY"

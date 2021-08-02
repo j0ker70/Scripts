@@ -1,0 +1,17 @@
+#!/bin/sh
+
+OPTIONS="Vim $HOME/.vim/vimrc"
+OPTIONS="$OPTIONS\nTmux $XDG_CONFIG_HOME/tmux/tmux.conf"
+OPTIONS="$OPTIONS\nBash $HOME/.bashrc"
+OPTIONS="$OPTIONS\nProfile $HOME/.profile"
+OPTIONS="$OPTIONS\nAlacritty $XDG_CONFIG_HOME/alacritty/alacritty.yml"
+OPTIONS="$OPTIONS\nBroot $XDG_CONFIG_HOME/broot/conf.hjson"
+OPTIONS="$OPTIONS\nMpv $XDG_CONFIG_HOME/mpv/mpv.conf"
+OPTIONS="$OPTIONS\nZathura $XDG_CONFIG_HOME/zathura/zathurarc"
+OPTIONS="$OPTIONS\nLf $XDG_CONFIG_HOME/lf/lfrc"
+OPTIONS="$OPTIONS\nSxiv $XDG_CONFIG_HOME/sxiv/exec/key-handler"
+OPTIONS="$OPTIONS\nStarship $XDG_CONFIG_HOME/starship.toml"
+
+X=$(echo $OPTIONS | cut -d' ' -f1 | sort | dmenu -r -i -p "Edit Config:") || exit 1
+
+exec $TERMINAL -e $EDITOR "$(echo $OPTIONS | grep "$X" | cut -d' ' -f2)"
