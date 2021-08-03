@@ -23,3 +23,11 @@
 * Easily searches in any search engine specified in the script
 * Uses dmenu to list the engines
 * After selecting an enginer, an exmpty dmenu prompt will ask for query
+
+## setbg
+
+* Changes background
+* With no arguements it will set a random wallpaper from the default wallpaper folder
+* Given a file name, it will set that as a wallpaper
+* Given a directory, it will set a image from that directory randomly
+* Genrates colorschemesusing pywal
