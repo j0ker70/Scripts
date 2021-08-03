@@ -1,0 +1,25 @@
+#! /bin/sh
+
+bgdir=$XDG_DATA_HOME/backgrounds
+bgloc=$XDG_DATA_HOME/backgrounds/wal
+
+if [ "$#" -ne 0 ]; then
+    loc=$(readlink -f $1)
+    if [ -f $loc ]; then
+        cp $loc $bgloc
+    elif [ -d $loc ]; then
+        randomimg=$(find "$loc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)
+        cp $randomimg $bgloc
+    else
+        notify-send "Error!" "Not a image or a directory."
+        exit 1
+    fi
+else
+    randomimg=$(find "$bgdir" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)
+    cp $randomimg $bgloc
+fi
+
+command -v wal >/dev/null 2>&1 &&
+	wal -c && wal -i "$bgloc" -o "$XDG_CONFIG_HOME/wal/postrun" >/dev/null 2>&1
+
+nitrogen --save --set-zoom-fill $bgloc
