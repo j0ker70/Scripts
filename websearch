@@ -10,6 +10,6 @@ OPTIONS="$OPTIONS\nFacebook https://www.facebook.com/search?q="
 
 ENGINE=$(echo $OPTIONS | cut -d' ' -f1 | sort | dmenu -i -r -p "Choose Engine") || exit 1
 
-QUERY=$(echo "" | dmenu -p "$ENGINE:")
+QUERY=$(echo "" | dmenu -p "$ENGINE:") || exit 1
 
 $BROWSER $(echo $OPTIONS | grep $ENGINE | cut -d' ' -f2)"$QUERY"
