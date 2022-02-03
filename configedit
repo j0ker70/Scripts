@@ -1,8 +1,14 @@
 #!/bin/sh
 
 OPTIONS="Vim $HOME/.vim/vimrc"
+OPTIONS="$OPTIONS\ni3 $XDG_CONFIG_HOME/i3/config"
+OPTIONS="$OPTIONS\ni3blocks $XDG_CONFIG_HOME/i3blocks/i3blocks.conf"
+OPTIONS="$OPTIONS\nRanger $XDG_CONFIG_HOME/ranger/rc.conf"
+OPTIONS="$OPTIONS\nKitty $XDG_CONFIG_HOME/kitty/kitty.conf"
+OPTIONS="$OPTIONS\nBottom $XDG_CONFIG_HOME/bottom/bottom.toml"
 OPTIONS="$OPTIONS\nTmux $XDG_CONFIG_HOME/tmux/tmux.conf"
-OPTIONS="$OPTIONS\nBash $HOME/.bashrc"
+OPTIONS="$OPTIONS\nBashrc $HOME/.bashrc"
+OPTIONS="$OPTIONS\nAliases $HOME/.bash_aliases"
 OPTIONS="$OPTIONS\nProfile $HOME/.profile"
 OPTIONS="$OPTIONS\nAlacritty $XDG_CONFIG_HOME/alacritty/alacritty.yml"
 OPTIONS="$OPTIONS\nBroot $XDG_CONFIG_HOME/broot/conf.hjson"
@@ -14,4 +20,4 @@ OPTIONS="$OPTIONS\nStarship $XDG_CONFIG_HOME/starship.toml"
 
 X=$(echo $OPTIONS | cut -d' ' -f1 | sort | dmenu -r -i -p "Edit Config:") || exit 1
 
-exec $TERMINAL -e $EDITOR "$(echo $OPTIONS | grep "$X" | cut -d' ' -f2)"
+exec $TERMINAL -e $EDITOR "$(echo $OPTIONS | grep -w "$X" | cut -d' ' -f2)"
