@@ -31,3 +31,9 @@
 * Given a file name, it will set that as a wallpaper
 * Given a directory, it will set a image from that directory randomly
 * Genrates colorschemesusing pywal
+
+## dmenuemoji
+
+* Copy emojis from dmenu
+* Reads from a file that has all the emojis listed
+* has issues in showing the emoji in dmenu. (In arch, installing `libxft-bgra` package from aur solves the issue
