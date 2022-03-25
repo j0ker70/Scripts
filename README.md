@@ -37,3 +37,8 @@
 * Copy emojis from dmenu
 * Reads from a file that has all the emojis listed
 * has issues in showing the emoji in dmenu. (In arch, installing `libxft-bgra` package from aur solves the issue
+
+## prompt
+
+* Gives a prompt to user to select either yes or no
+* If user selects yes then it runs the command specified in the argument
